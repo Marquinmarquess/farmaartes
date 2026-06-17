@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FarmaArtes — Crie tabloides, ofertas e promoções da sua farmácia em 3 minutos</title>
+<meta name="description" content="Pack de prompts profissionais para gerar tabloides, ofertas e promoções de farmácia com IA gratuita. Acesso vitalício por R$27." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --paper: #FFFFFF;
+    --ink: #0F1212;
+    --ink-soft: #3A3F3F;
+    --muted: #6B7280;
+    --line: #E5E5E0;
+    --farma: #00733E;
+    --farma-deep: #004F2B;
+    --farma-soft: #E8F4ED;
+    --oferta: #E5193A;
+    --cupom: #FFD600;
+    --whats: #25D366;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .display { font-family: 'Anton', 'Manrope', sans-serif; font-weight: 400; letter-spacing: 0.5px; line-height: 1.05; text-transform: uppercase; }
+  .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .container-tight { max-width: 880px; }
+  a { color: inherit; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ---------- TOP STRIP ---------- */
+  .top-strip {
+    background: var(--ink);
+    color: var(--cupom);
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .top-strip strong { color: #fff; }
+
+  /* ---------- HEADER ---------- */
+  header.site {
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(6px);
+    background: rgba(250,250,247,0.92);
+  }
+  .header-row { display: flex; align-items: center; justify-content: space-between; }
+  .logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .logo span { color: var(--oferta); }
+  .header-cta {
+    background: var(--farma);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background .2s;
+  }
+  .header-cta:hover { background: var(--farma-deep); }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 64px 0 48px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--farma-soft);
+    color: var(--farma-deep);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--farma); display: inline-block;
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  h1.headline {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(38px, 5.6vw, 68px);
+    line-height: 0.98;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  h1.headline .strike {
+    color: var(--oferta);
+    position: relative;
+    display: inline-block;
+  }
+  h1.headline .strike::after {
+    content: '';
+    position: absolute;
+    left: -4px; right: -4px;
+    top: 52%;
+    height: 6px;
+    background: var(--oferta);
+    transform: rotate(-3deg);
+  }
+  h1.headline em {
+    font-style: normal;
+    background: var(--cupom);
+    padding: 0 8px;
+    display: inline-block;
+    transform: rotate(-1deg);
+  }
+  .subhead {
+    font-size: 19px;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    max-width: 540px;
+  }
+  .subhead strong { color: var(--ink); }
+
+  .cta-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 28px; }
+  .cta-primary {
+    background: var(--farma);
+    color: white;
+    padding: 18px 32px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 17px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0,115,62,0.25);
+    transition: transform .2s, box-shadow .2s, background .2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cta-primary:hover {
+    background: var(--farma-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0,115,62,0.35);
+  }
+  .cta-primary .arrow { transition: transform .2s; }
+  .cta-primary:hover .arrow { transform: translateX(4px); }
+  .cta-meta { font-size: 14px; color: var(--muted); }
+  .cta-meta strong { color: var(--ink); }
+
+  .hero-trust { display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--ink-soft); }
+  .hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-trust svg { color: var(--farma); }
+
+  /* ---- TABLOIDE FAKE (HERO RIGHT) ---- */
+  .tabloide-mock {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px -20px rgba(15,18,18,0.25), 0 4px 12px rgba(15,18,18,0.06);
+    transform: rotate(1.5deg);
+    position: relative;
+  }
+  .tabloide-mock::before {
+    content: 'EXEMPLO GERADO COM FARMAARTES';
+    position: absolute;
+    top: -14px; left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    background: var(--ink);
+    color: var(--cupom);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.8px;
+    z-index: 2;
+  }
+  .tabloide-head {
+    background: var(--oferta);
+    color: white;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tabloide-head .pill {
+    background: var(--cupom);
+    color: var(--ink);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-family: 'Anton', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .tabloide-head h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .tabloide-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+  }
+  .tabloide-item {
+    background: white;
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .tabloide-item .img {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #f5f5f0, #e8e8e0);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .tabloide-item .img::after {
+    content: '';
+    position: absolute;
+    inset: 30%;
+    background: var(--farma-soft);
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+  .tabloide-item .nome { font-size: 10px; color: var(--ink-soft); margin-bottom: 4px; line-height: 1.2; }
+  .tabloide-item .preco-old { font-size: 10px; color: var(--muted); text-decoration: line-through; }
+  .tabloide-item .preco-new {
+    font-family: 'Anton', sans-serif;
+    color: var(--oferta);
+    font-size: 22px;
+    letter-spacing: 0.5px;
+  }
+  .tabloide-foot {
+    background: var(--farma);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  /* ---------- DOR ---------- */
+  section { padding: 72px 0; }
+  .section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(30px, 4vw, 48px);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 18px;
+    margin-bottom: 48px;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .dor {
+    background: var(--ink);
+    color: white;
+  }
+  .dor .section-title { color: white; }
+  .dor .section-sub { color: rgba(255,255,255,0.7); }
+  .dor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .dor-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 24px;
+    border-radius: 12px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .dor-x {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--oferta);
+    color: white;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 18px;
+  }
+  .dor-item p { font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.9); }
+
+  /* ---------- COMO FUNCIONA ---------- */
+  .como-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .step {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px 24px;
+    position: relative;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .step:hover { transform: translateY(-4px); box-shadow: 0 12px 32px -8px rgba(0,0,0,0.1); }
+  .step-num {
+    position: absolute;
+    top: -20px;
+    left: 24px;
+    background: var(--farma);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+  }
+  .step h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 12px 0;
+  }
+  .step p { color: var(--ink-soft); font-size: 15px; }
+  .step .tag {
+    display: inline-block;
+    margin-top: 14px;
+    background: var(--farma-soft);
+    color: var(--farma-deep);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* ---------- O QUE TEM DENTRO ---------- */
+  .conteudo { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .conteudo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .conteudo-card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color .2s;
+  }
+  .conteudo-card:hover { border-color: var(--farma); }
+  .conteudo-card .badge {
+    display: inline-block;
+    background: var(--farma);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .conteudo-card .badge.especial { background: var(--oferta); }
+  .conteudo-card h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .conteudo-card .qtd { color: var(--farma); font-weight: 800; font-size: 14px; margin-bottom: 12px; }
+  .conteudo-card p { color: var(--ink-soft); font-size: 15px; }
+  .conteudo-card ul { list-style: none; margin-top: 14px; }
+  .conteudo-card li {
+    padding: 4px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .conteudo-card li::before {
+    content: '✓';
+    color: var(--farma);
+    font-weight: 800;
+  }
+
+  /* ---------- 65+ DESTAQUE ---------- */
+  .destaque-65 {
+    background: linear-gradient(135deg, #FFF9E5, #FFFDF5);
+    border: 2px dashed var(--cupom);
+    border-radius: 20px;
+    padding: 48px;
+    margin: 48px auto 0;
+    max-width: 980px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .destaque-65 .badge {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--cupom);
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .destaque-65 h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 36px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .destaque-65 p { color: var(--ink-soft); margin-bottom: 14px; }
+  .destaque-65 .features { list-style: none; margin-top: 16px; }
+  .destaque-65 .features li {
+    padding: 8px 0;
+    font-weight: 600;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .destaque-65 .features li::before {
+    content: '●';
+    color: var(--farma);
+  }
+  .destaque-65-visual {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 12px 32px -10px rgba(0,0,0,0.15);
+  }
+  .destaque-65-visual .preview-letra {
+    font-family: 'Anton', sans-serif;
+    font-size: 56px;
+    color: var(--oferta);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .destaque-65-visual .preview-desc {
+    font-size: 20px;
+    color: var(--ink);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .destaque-65-visual hr { border: none; border-top: 1px solid var(--line); margin: 16px 0; }
+  .destaque-65-visual .preview-meta { font-size: 14px; color: var(--muted); }
+
+  /* ---------- BONUS ---------- */
+  .bonus { background: var(--ink); color: white; }
+  .bonus .section-title { color: white; }
+  .bonus .section-sub { color: rgba(255,255,255,0.7); }
+  .bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .bonus-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+  }
+  .bonus-card .num {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: 'Anton', sans-serif;
+    font-size: 40px;
+    color: var(--cupom);
+    opacity: 0.4;
+  }
+  .bonus-card .tag {
+    display: inline-block;
+    background: var(--cupom);
+    color: var(--ink);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .bonus-card h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    padding-right: 60px;
+  }
+  .bonus-card p { color: rgba(255,255,255,0.75); font-size: 15px; }
+  .bonus-card .valor {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--cupom);
+    font-weight: 700;
+  }
+  .bonus-card .valor s { color: rgba(255,255,255,0.4); margin-right: 8px; }
+
+  /* ---------- OFERTA / TABLOIDE PREÇO ---------- */
+  .oferta-secao { padding: 88px 0; background: var(--bg); }
+  .preco-tabloide {
+    max-width: 720px;
+    margin: 0 auto;
+    background: white;
+    border: 3px solid var(--ink);
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 12px 12px 0 var(--cupom);
+    position: relative;
+  }
+  .preco-head {
+    background: var(--oferta);
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 3px solid var(--ink);
+  }
+  .preco-corpo {
+    padding: 48px 32px 32px;
+    text-align: center;
+  }
+  .preco-titulo {
+    font-family: 'Anton', sans-serif;
+    font-size: 32px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    line-height: 1.05;
+  }
+  .preco-de {
+    color: var(--muted);
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .preco-de s { font-size: 28px; color: var(--ink-soft); }
+  .preco-por-label {
+    background: var(--ink);
+    color: var(--cupom);
+    display: inline-block;
+    padding: 6px 16px;
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin: 12px 0 8px;
+  }
+  .preco-valor {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(96px, 14vw, 160px);
+    line-height: 0.9;
+    color: var(--oferta);
+    letter-spacing: -2px;
+  }
+  .preco-valor .cifrao { font-size: 0.5em; vertical-align: top; margin-right: 6px; }
+  .preco-valor .centavos { font-size: 0.35em; vertical-align: top; margin-left: 4px; }
+  .preco-info {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin: 16px 0 28px;
+    line-height: 1.5;
+  }
+  .preco-info strong { color: var(--ink); }
+  .preco-cta {
+    background: var(--farma);
+    color: white;
+    padding: 22px 36px;
+    border-radius: 12px;
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 24px rgba(0,115,62,0.3);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .preco-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0,115,62,0.4);
+  }
+  .preco-rodape {
+    background: var(--farma-soft);
+    text-align: center;
+    padding: 16px;
+    font-size: 13px;
+    color: var(--farma-deep);
+    border-top: 1px solid var(--farma);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .stack-valor {
+    max-width: 560px;
+    margin: 48px auto 0;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .stack-valor h4 {
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    text-align: center;
+    color: var(--ink-soft);
+    letter-spacing: 1px;
+  }
+  .stack-valor .item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 15px;
+  }
+  .stack-valor .item:last-child { border-bottom: none; }
+  .stack-valor .item span:last-child { font-weight: 700; }
+  .stack-valor .total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 2px solid var(--ink);
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+  .stack-valor .total span:last-child { color: var(--oferta); }
+
+  /* ---------- GARANTIA ---------- */
+  .garantia {
+    max-width: 720px;
+    margin: 0 auto;
+    background: white;
+    border: 2px solid var(--farma);
+    border-radius: 20px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .garantia-selo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: var(--farma);
+    color: white;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 14px;
+  }
+  .garantia-selo .num {
+    font-size: 56px;
+    letter-spacing: -2px;
+    margin: 4px 0;
+  }
+  .garantia-selo .label { font-size: 14px; letter-spacing: 1px; }
+  .garantia h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  .garantia p { color: var(--ink-soft); font-size: 16px; }
+
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--paper); border-top: 1px solid var(--line); }
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    padding: 20px 0;
+    font-weight: 700;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    transition: color .2s;
+  }
+  .faq-q:hover { color: var(--farma); }
+  .faq-q .chevron {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--farma-soft);
+    color: var(--farma);
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    transition: transform .2s;
+  }
+  .faq-item.open .faq-q .chevron { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .faq-item.open .faq-a { max-height: 400px; padding-bottom: 20px; }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final {
+    background: var(--farma-deep);
+    color: white;
+    text-align: center;
+    padding: 88px 0;
+  }
+  .cta-final h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .cta-final h2 em {
+    font-style: normal;
+    background: var(--cupom);
+    color: var(--ink);
+    padding: 0 12px;
+  }
+  .cta-final p {
+    font-size: 18px;
+    opacity: 0.85;
+    margin-bottom: 32px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-final .cta-primary {
+    background: var(--cupom);
+    color: var(--ink);
+    font-size: 20px;
+    padding: 22px 40px;
+  }
+  .cta-final .cta-primary:hover { background: white; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.6);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 14px;
+  }
+  footer .logo { color: white; opacity: 0.9; margin-bottom: 12px; }
+  footer a { color: var(--cupom); text-decoration: none; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px) {
+    section { padding: 56px 0; }
+    .hero { padding: 40px 0 32px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .tabloide-mock { max-width: 360px; margin: 0 auto; }
+    .dor-grid, .conteudo-grid, .bonus-grid { grid-template-columns: 1fr; }
+    .como-grid { grid-template-columns: 1fr; gap: 36px; }
+    .destaque-65 { grid-template-columns: 1fr; padding: 32px; }
+    .destaque-65 h3 { font-size: 28px; }
+    .garantia { grid-template-columns: 1fr; text-align: center; padding: 32px; }
+    .garantia-selo { margin: 0 auto; }
+    .preco-corpo { padding: 32px 20px 24px; }
+    .preco-titulo { font-size: 24px; }
+    .cta-primary { padding: 16px 24px; font-size: 16px; }
+    .preco-cta { font-size: 18px; padding: 18px 24px; }
+    .header-cta { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP STRIP -->
+<div class="top-strip">
+  🔥 OFERTA DE LANÇAMENTO — Apenas <strong>R$27</strong> para as 100 primeiras farmácias
+</div>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="container header-row">
+    <div class="logo">Farma<span>Artes</span></div>
+    <a href="#oferta" class="header-cta">Garantir por R$27</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Para donos de farmácia que cansaram de pagar designer caro</div>
+      <h1 class="headline">
+        Crie tabloides, ofertas e promoções da sua farmácia em <em>3 minutos</em> — sem designer, sem mensalidade, sem dor de cabeça
+      </h1>
+      <p class="subhead">
+        <strong>50+ prompts profissionais</strong> prontos para você copiar, colar em IA gratuita e gerar arte de varejo no padrão das grandes redes — Drogasil, Pague Menos, São João. Pagou uma vez, é seu para sempre.
+      </p>
+
+      <div class="cta-row">
+        <a href="#oferta" class="cta-primary">
+          QUERO MEU PACK POR R$27
+          <span class="arrow">→</span>
+        </a>
+        <div class="cta-meta">
+          <strong>Pagamento único.</strong> Acesso vitalício.
+        </div>
+      </div>
+
+      <div class="hero-trust">
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Funciona em IA gratuita
+        </span>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Garantia de 7 dias
+        </span>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Acesso imediato
+        </span>
+      </div>
+    </div>
+
+    <!-- Tabloide Fake -->
+    <div class="tabloide-mock" aria-hidden="true">
+      <div class="tabloide-head">
+        <h3>Ofertas da Semana</h3>
+        <span class="pill">−40%</span>
+      </div>
+      <div class="tabloide-grid">
+        <div class="tabloide-item">
+          <div class="img"></div>
+          <div class="nome">Vitamina C 1g</div>
+          <div class="preco-old">R$ 24,90</div>
+          <div class="preco-new">R$14<sup style="font-size:14px">,90</sup></div>
+        </div>
+        <div class="tabloide-item">
+          <div class="img"></div>
+          <div class="nome">Protetor Solar FPS 60</div>
+          <div class="preco-old">R$ 89,90</div>
+          <div class="preco-new">R$59<sup style="font-size:14px">,90</sup></div>
+        </div>
+        <div class="tabloide-item">
+          <div class="img"></div>
+          <div class="nome">Shampoo Anticaspa</div>
+          <div class="preco-old">R$ 32,00</div>
+          <div class="preco-new">R$19<sup style="font-size:14px">,90</sup></div>
+        </div>
+        <div class="tabloide-item">
+          <div class="img"></div>
+          <div class="nome">Hidratante Facial</div>
+          <div class="preco-old">R$ 45,00</div>
+          <div class="preco-new">R$27<sup style="font-size:14px">,90</sup></div>
+        </div>
+        <div class="tabloide-item">
+          <div class="img"></div>
+          <div class="nome">Termômetro Digital</div>
+          <div class="preco-old">R$ 28,00</div>
+          <div class="preco-new">R$15<sup style="font-size:14px">,90</sup></div>
+        </div>
+        <div class="tabloide-item">
+          <div class="img"></div>
+          <div class="nome">Multivitamínico 60cps</div>
+          <div class="preco-old">R$ 52,00</div>
+          <div class="preco-new">R$34<sup style="font-size:14px">,90</sup></div>
+        </div>
+      </div>
+      <div class="tabloide-foot">SUA FARMÁCIA · OFERTAS VÁLIDAS ATÉ SÁBADO</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="dor">
+  <div class="container">
+    <h2 class="section-title">Você reconhece essa cena?</h2>
+    <p class="section-sub">Toda semana se repete. E toda semana a farmácia da esquina larga na frente.</p>
+    <div class="dor-grid">
+      <div class="dor-item">
+        <div class="dor-x">✕</div>
+        <p>Chegou quinta-feira, você precisa divulgar oferta no WhatsApp e Instagram — e <strong>não tem ideia de como fazer uma arte que pareça profissional</strong>.</p>
+      </div>
+      <div class="dor-item">
+        <div class="dor-x">✕</div>
+        <p>Já pagou <strong>R$80 a R$200 para designer fazer cada arte</strong>. Atrasou, voltou com erro, e quando ficou pronto a promoção já tinha passado.</p>
+      </div>
+      <div class="dor-item">
+        <div class="dor-x">✕</div>
+        <p>Tentou o Canva. Passou 2 horas mexendo, <strong>o resultado ficou amador</strong> e nada parecido com o que a Drogasil faz.</p>
+      </div>
+      <div class="dor-item">
+        <div class="dor-x">✕</div>
+        <p>Ouviu falar de ChatGPT, mas <strong>não sabe escrever prompt</strong> e o resultado sempre sai estranho — cores erradas, texto borrado, nada que sirva.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APRESENTAÇÃO -->
+<section>
+  <div class="container container-tight" style="text-align:center;">
+    <div class="eyebrow" style="margin-bottom: 24px;">A SOLUÇÃO</div>
+    <h2 class="section-title">FarmaArtes</h2>
+    <p class="section-sub" style="font-size: 20px; margin-bottom: 32px;">
+      Um pacote com <strong style="color:var(--ink)">+50 prompts profissionais</strong> que transformam <strong style="color:var(--ink)">IA gratuita</strong> em uma máquina de arte de farmácia. Tabloides, ofertas, promoções, kits, datas comemorativas. Você copia, cola, e em 3 minutos tem uma arte no padrão das grandes redes.
+    </p>
+    <div style="display: inline-block; background: var(--cupom); padding: 14px 24px; border-radius: 8px; font-weight: 800; transform: rotate(-1deg);">
+      Pagou uma vez. É seu para sempre.
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section style="background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="container">
+    <h2 class="section-title">Como funciona</h2>
+    <p class="section-sub">3 passos. Sem mensalidade. Sem complicação.</p>
+    <div class="como-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Escolha o prompt</h3>
+        <p>Abra o pack, escolha o tipo de arte que você quer (tabloide, oferta da semana, promoção relâmpago, dia das mães…) e copie o prompt.</p>
+        <span class="tag">+50 prompts prontos</span>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Cole na IA</h3>
+        <p>Cole no Google Gemini, Bing Image Creator ou ChatGPT — todos têm versão gratuita. A IA gera a arte em segundos.</p>
+        <span class="tag">100% IA grátis</span>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Adicione sua logo</h3>
+        <p>Abra a arte no Canva (também grátis), arraste sua logo, ajuste o preço se quiser, e exporte. Pronto para WhatsApp, Instagram ou impressão.</p>
+        <span class="tag">30 segundos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE TEM DENTRO -->
+<section class="conteudo">
+  <div class="container">
+    <h2 class="section-title">O que vem no pack</h2>
+    <p class="section-sub">Tudo organizado em pastas no Notion. Acesso pelo celular ou computador.</p>
+
+    <div class="conteudo-grid">
+      <div class="conteudo-card">
+        <span class="badge">Tabloides</span>
+        <h3>Pack Tabloide Profissional</h3>
+        <div class="qtd">12+ prompts com grades variadas</div>
+        <p>Tabloides com grades de <strong>3, 6, 9, 12, 15, 20 e 25 produtos</strong>. Você escolhe quantas ofertas vai colocar na semana e o prompt já vem dimensionado.</p>
+        <ul>
+          <li>Tabloide semanal padrão</li>
+          <li>Tabloide de fim de mês</li>
+          <li>Tabloide datas comemorativas</li>
+          <li>Tabloide de aniversário da loja</li>
+        </ul>
+      </div>
+
+      <div class="conteudo-card">
+        <span class="badge especial">Exclusivo 65+</span>
+        <h3>Pack Tabloide 65+</h3>
+        <div class="qtd">Diferencial único do mercado</div>
+        <p>Tabloides especiais para o cliente da terceira idade — <strong>letras grandes, contraste alto, paleta acolhedora</strong> e produtos pensados para essa faixa. O cliente que mais compra na farmácia merece arte feita para ele.</p>
+        <ul>
+          <li>Letra 2x maior que o padrão</li>
+          <li>Paleta validada por estudos de visibilidade</li>
+          <li>Foco em medicamentos contínuos e cuidado</li>
+        </ul>
+      </div>
+
+      <div class="conteudo-card">
+        <span class="badge">Ofertas</span>
+        <h3>Pack Ofertas</h3>
+        <div class="qtd">15+ formatos de oferta</div>
+        <p>Para quando você quer dar destaque a <strong>um produto só</strong>. Oferta do dia, da semana, do mês, oferta surpresa, oferta de aniversariante.</p>
+        <ul>
+          <li>Story Instagram (formato 9:16)</li>
+          <li>Feed Instagram (1:1 e 4:5)</li>
+          <li>WhatsApp Status</li>
+          <li>Impressão A4 e A5</li>
+        </ul>
+      </div>
+
+      <div class="conteudo-card">
+        <span class="badge">Promoções</span>
+        <h3>Pack Promoções</h3>
+        <div class="qtd">15+ tipos de promoção</div>
+        <p>Promoção relâmpago, promoção especial, linha kids, linha 65+, linha medicamentos, leve-3-pague-2, queima de estoque. <strong>Todas com gatilhos de urgência embutidos.</strong></p>
+        <ul>
+          <li>Promoção relâmpago (24h)</li>
+          <li>Linha kids, mulher, 65+</li>
+          <li>Categorias: medicamento, dermo, higiene</li>
+          <li>Queima de estoque / liquidação</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DESTAQUE 65+ -->
+    <div class="destaque-65">
+      <div>
+        <span class="badge">DIFERENCIAL ÚNICO</span>
+        <h3>O único pack que pensa no cliente que mais compra na sua farmácia</h3>
+        <p>
+          A maioria dos packs ignora o público <strong>65+</strong> — que é justamente quem usa medicamento contínuo, vai à farmácia toda semana e tem mais dificuldade de enxergar arte com letra pequena.
+        </p>
+        <ul class="features">
+          <li>Tipografia 2x maior</li>
+          <li>Contraste alto validado</li>
+          <li>Paleta que não cansa a vista</li>
+          <li>Produtos da rotina da terceira idade</li>
+        </ul>
+      </div>
+      <div class="destaque-65-visual">
+        <div style="background: var(--cupom); color: var(--ink); display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 800; letter-spacing: 1px; margin-bottom: 12px;">OFERTA SÊNIOR</div>
+        <div class="preview-letra">R$ 12,90</div>
+        <div class="preview-desc">PRESSÃO ARTERIAL<br>Losartana 50mg · 30 cps</div>
+        <hr>
+        <div class="preview-meta">Letra grande, contraste alto, leitura fácil</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="bonus">
+  <div class="container">
+    <p class="section-sub" style="margin-bottom: 8px; color: var(--cupom); font-weight:800; letter-spacing:1px; font-size:14px;">★ BÔNUS INCLUSOS ★</p>
+    <h2 class="section-title">+ 4 bônus que valem mais que o produto</h2>
+    <p class="section-sub">Sem custo extra. Já estão dentro do pack.</p>
+
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="num">01</div>
+        <span class="tag">CALENDÁRIO</span>
+        <h3>Calendário Anual de Datas para Farmácia</h3>
+        <p>De Janeiro Branco a Dezembro Vermelho — todas as datas que rendem oferta no varejo farma, mês a mês, com sugestão de promoção para cada uma.</p>
+        <div class="valor"><s>R$47</s> Grátis</div>
+      </div>
+
+      <div class="bonus-card">
+        <div class="num">02</div>
+        <span class="tag">GRUPO VIP</span>
+        <h3>Pack Grupo VIP do WhatsApp</h3>
+        <p>Prompts para criar artes de convite, regras do grupo, oferta diária, oferta secreta e gatilho de escassez. Tudo para você montar e crescer um VIP que vende todo dia.</p>
+        <div class="valor"><s>R$37</s> Grátis</div>
+      </div>
+
+      <div class="bonus-card">
+        <div class="num">03</div>
+        <span class="tag">LOGO</span>
+        <h3>Inspiração de Logo Marca</h3>
+        <p>Não tem logo profissional ainda? Receba prompts inspirados nas grandes redes (Drogasil, São João, Pague Menos, Rosário) para gerar opções e ter um ponto de partida sério.</p>
+        <div class="valor"><s>R$57</s> Grátis</div>
+      </div>
+
+      <div class="bonus-card">
+        <div class="num">04</div>
+        <span class="tag">GUIA</span>
+        <h3>Guia: 7 Erros que Espantam Cliente da Sua Arte</h3>
+        <p>PDF curto e direto com os 7 erros visuais mais comuns em arte de farmácia — e como corrigir cada um em segundos. Aplica em qualquer arte que você já tem.</p>
+        <div class="valor"><s>R$27</s> Grátis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="oferta-secao" id="oferta">
+  <div class="container">
+    <h2 class="section-title">Quanto custa</h2>
+    <p class="section-sub">Pagamento único. Acesso vitalício. Sem mensalidade obrigatória.</p>
+
+    <div class="preco-tabloide">
+      <div class="preco-head">★ OFERTA DE LANÇAMENTO ★</div>
+      <div class="preco-corpo">
+        <div class="preco-titulo">FarmaArtes — Pack Completo</div>
+        <div class="preco-de">DE <s>R$197,00</s></div>
+        <div class="preco-por-label">POR APENAS</div>
+        <div class="preco-valor">
+          <span class="cifrao">R$</span>27<span class="centavos">,00</span>
+        </div>
+        <div class="preco-info">
+          <strong>Pagamento único.</strong> Sem assinatura. Sem mensalidade.<br>
+          Acesso imediato. Garantia incondicional de 7 dias.
+        </div>
+        <a href="#" class="preco-cta">
+          QUERO COMPRAR AGORA
+          <span>→</span>
+        </a>
+      </div>
+      <div class="preco-rodape">
+        💳 Cartão · Pix · Boleto · ✓ Compra 100% segura
+      </div>
+    </div>
+
+    <div class="stack-valor">
+      <h4>Veja tudo o que você leva</h4>
+      <div class="item"><span>Pack Tabloide Profissional</span><span>R$ 67</span></div>
+      <div class="item"><span>Pack Tabloide 65+ (exclusivo)</span><span>R$ 47</span></div>
+      <div class="item"><span>Pack Ofertas</span><span>R$ 47</span></div>
+      <div class="item"><span>Pack Promoções</span><span>R$ 47</span></div>
+      <div class="item"><span>Bônus 1 — Calendário Anual</span><span>R$ 47</span></div>
+      <div class="item"><span>Bônus 2 — Pack Grupo VIP</span><span>R$ 37</span></div>
+      <div class="item"><span>Bônus 3 — Inspiração de Logo</span><span>R$ 57</span></div>
+      <div class="item"><span>Bônus 4 — Guia 7 Erros</span><span>R$ 27</span></div>
+      <div class="total"><span>Valor total</span><span>R$ 376</span></div>
+      <div class="total" style="border:none; padding-top: 0; margin-top: 4px; font-size: 16px; opacity: 0.7;">
+        <span>Você paga hoje</span><span style="color: var(--farma)">R$ 27</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section>
+  <div class="container">
+    <div class="garantia">
+      <div class="garantia-selo">
+        <div class="label">Garantia</div>
+        <div class="num">7</div>
+        <div class="label">Dias</div>
+      </div>
+      <div>
+        <h3>Risco zero — se não servir, devolvemos seu dinheiro</h3>
+        <p>
+          Você tem <strong>7 dias completos</strong> para testar todo o pack. Gerou as artes? Não gostou? Achou que não vale o que pagou? Manda um e-mail e a gente devolve seus R$27 — sem perguntas, sem burocracia, sem julgamento. <strong>O risco é nosso, não seu.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Eu preciso pagar ChatGPT ou alguma assinatura para usar?</span>
+          <span class="chevron">+</span>
+        </button>
+        <div class="faq-a">
+          Não. Os prompts foram testados nas versões <strong>gratuitas</strong> do Google Gemini e do Bing Image Creator (DALL-E 3). Você só vai precisar de uma conta Google ou Microsoft — que você provavelmente já tem. Zero mensalidade obrigatória.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Funciona se eu não souber nada de design ou IA?</span>
+          <span class="chevron">+</span>
+        </button>
+        <div class="faq-a">
+          Sim — o pack foi feito exatamente para isso. Você não precisa saber escrever prompt, não precisa entender de design, não precisa mexer no Photoshop. <strong>Copia, cola, pronto.</strong> Vem com vídeo curto mostrando o passo a passo, do zero até a arte exportada.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>A arte sai com a logo e as cores da minha farmácia?</span>
+          <span class="chevron">+</span>
+        </button>
+        <div class="faq-a">
+          A paleta da arte segue o estilo da sua marca. A logo em si você adiciona depois no Canva em 30 segundos — mostramos como no vídeo. Isso é proposital: dá <strong>controle total a você</strong> sobre a aparência final, ao invés de depender da IA acertar a logo (o que nenhuma IA faz bem hoje).
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Vou receber atualizações de prompts novos?</span>
+          <span class="chevron">+</span>
+        </button>
+        <div class="faq-a">
+          O pack que você compra hoje é <strong>seu para sempre</strong>. Se quiser receber prompts novos toda semana, atualizações sazonais e tendências, você pode entrar no <strong>Clube de Atualizações</strong> (R$9,90/mês ou R$47/ano) — totalmente opcional. Quem só quer o pack atual paga uma vez e não se preocupa com mais nada.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>Em quanto tempo recebo depois de comprar?</span>
+          <span class="chevron">+</span>
+        </button>
+        <div class="faq-a">
+          Acesso imediato. Depois do pagamento aprovado (cartão na hora, Pix em até 2 minutos), você recebe o link de acesso por e-mail e já pode usar.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>E se eu não gostar?</span>
+          <span class="chevron">+</span>
+        </button>
+        <div class="faq-a">
+          Tem 7 dias de garantia incondicional. Manda um e-mail e devolvemos seu dinheiro, sem perguntas. <strong>O risco é todo nosso.</strong>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Chega de pagar designer toda semana.<br>Crie suas próprias artes <em>em 3 minutos.</em></h2>
+    <p>+50 prompts profissionais. 4 bônus inclusos. Acesso vitalício. Garantia de 7 dias. Pagou R$27 e acabou.</p>
+    <a href="#oferta" class="cta-primary">
+      GARANTIR MEU PACK POR R$27
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logo">Farma<span style="color: var(--oferta)">Artes</span></div>
+    <p>Um produto MARQX Group · Marco Andrade</p>
+    <p style="margin-top: 8px; font-size: 12px; opacity: 0.6;">
+      Em caso de dúvida: <a href="mailto:contato@marqxgroup.com.br">contato@marqxgroup.com.br</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
