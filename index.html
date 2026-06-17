@@ -497,6 +497,97 @@
   .destaque-65-visual hr { border: none; border-top: 1px solid var(--line); margin: 16px 0; }
   .destaque-65-visual .preview-meta { font-size: 14px; color: var(--muted); }
 
+  /* ---------- CARROSSEL PROVA SOCIAL ---------- */
+  .prova { background: var(--bg); overflow: hidden; }
+  .prova .section-title { margin-bottom: 16px; }
+  .prova-headline-mark {
+    display: inline-block;
+    background: var(--oferta);
+    color: white;
+    padding: 0 10px;
+    transform: rotate(-1deg);
+  }
+  .carousel-wrap {
+    position: relative;
+    width: 100%;
+    margin-top: 48px;
+    /* fade nas laterais */
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  }
+  .carousel-track {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    width: max-content;
+    animation: scroll-arts 48s linear infinite;
+  }
+  .carousel-wrap:hover .carousel-track { animation-play-state: paused; }
+  @keyframes scroll-arts {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .art-card {
+    position: relative;
+    flex-shrink: 0;
+    width: 300px;
+    height: 480px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 16px 40px -16px rgba(15,18,18,0.35), 0 2px 8px rgba(15,18,18,0.08);
+    background: white;
+    border: 1px solid var(--line);
+    user-select: none;
+  }
+  .art-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+  /* overlay anti-cópia: camada transparente por cima impede salvar/arrastar */
+  .art-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(15,18,18,0.04) 0%,
+      rgba(15,18,18,0) 35%,
+      rgba(15,18,18,0) 65%,
+      rgba(15,18,18,0.10) 100%);
+    z-index: 2;
+    pointer-events: auto;
+  }
+  .art-card .art-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 3;
+    background: rgba(15,18,18,0.82);
+    backdrop-filter: blur(4px);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    pointer-events: none;
+  }
+  .art-card .art-tag.especial { background: var(--oferta); }
+  .prova-cta-row { text-align: center; margin-top: 48px; }
+  .prova-disclaimer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   /* ---------- BONUS ---------- */
   .bonus { background: var(--ink); color: white; }
   .bonus .section-title { color: white; }
@@ -832,6 +923,8 @@
     .cta-primary { padding: 16px 24px; font-size: 16px; }
     .preco-cta { font-size: 18px; padding: 18px 24px; }
     .header-cta { display: none; }
+    .art-card { width: 230px; height: 368px; }
+    .carousel-track { animation-duration: 36s; }
   }
 </style>
 </head>
@@ -1090,6 +1183,47 @@
   </div>
 </section>
 
+<!-- PROVA SOCIAL / CARROSSEL -->
+<section class="prova">
+  <div class="container">
+    <h2 class="section-title">Veja o nível das artes que <span class="prova-headline-mark">você</span> vai criar</h2>
+    <p class="section-sub">
+      Cada arte abaixo foi gerada com os prompts do FarmaArtes. <strong>Enquanto sua farmácia não divulga, o cliente compra na concorrência que divulga.</strong> Toda semana sem tabloide é venda saindo pela porta.
+    </p>
+  </div>
+
+  <div class="carousel-wrap" oncontextmenu="return false;">
+    <div class="carousel-track">
+      <!-- Conjunto 1 -->
+      <div class="art-card"><span class="art-tag">Oferta · Data</span><img src="assets/arte-01.png" alt="Arte de oferta dia dos namorados criada com FarmaArtes" loading="lazy"></div>
+      <div class="art-card"><span class="art-tag">Oferta · Data</span><img src="assets/arte-02.png" alt="Arte de oferta dia dos pais criada com FarmaArtes" loading="lazy"></div>
+      <div class="art-card"><span class="art-tag">Tabloide</span><img src="assets/arte-03.png" alt="Tabloide de ofertas da semana criado com FarmaArtes" loading="lazy"></div>
+      <div class="art-card"><span class="art-tag especial">Guia 65+</span><img src="assets/arte-04.png" alt="Guia de vitaminas por idade criado com FarmaArtes" loading="lazy"></div>
+      <div class="art-card"><span class="art-tag">Grupo VIP</span><img src="assets/arte-05.png" alt="Arte de grupo VIP de ofertas criada com FarmaArtes" loading="lazy"></div>
+      <div class="art-card"><span class="art-tag">Grupo VIP</span><img src="assets/arte-06.png" alt="Arte de convite grupo VIP WhatsApp criada com FarmaArtes" loading="lazy"></div>
+      <!-- Conjunto 2 (duplicado para loop infinito perfeito) -->
+      <div class="art-card"><span class="art-tag">Oferta · Data</span><img src="assets/arte-01.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="art-card"><span class="art-tag">Oferta · Data</span><img src="assets/arte-02.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="art-card"><span class="art-tag">Tabloide</span><img src="assets/arte-03.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="art-card"><span class="art-tag especial">Guia 65+</span><img src="assets/arte-04.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="art-card"><span class="art-tag">Grupo VIP</span><img src="assets/arte-05.png" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="art-card"><span class="art-tag">Grupo VIP</span><img src="assets/arte-06.png" alt="" loading="lazy" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="prova-cta-row">
+      <a href="#oferta" class="cta-primary">
+        QUERO CRIAR ARTES ASSIM POR R$27
+        <span class="arrow">→</span>
+      </a>
+    </div>
+    <p class="prova-disclaimer">
+      Todas as artes acima foram produzidas com os prompts incluídos no pack, usando IA gratuita. Os produtos, marcas e preços exibidos são meramente ilustrativos.
+    </p>
+  </div>
+</section>
+
 <!-- BONUS -->
 <section class="bonus">
   <div class="container">
@@ -1152,7 +1286,7 @@
           <strong>Pagamento único.</strong> Sem assinatura. Sem mensalidade.<br>
           Acesso imediato. Garantia incondicional de 7 dias.
         </div>
-        <a href="#" class="preco-cta">
+        <a href="https://pay.cakto.com.br/7usxyz3_929933" class="preco-cta">
           QUERO COMPRAR AGORA
           <span>→</span>
         </a>
@@ -1291,6 +1425,14 @@
     </p>
   </div>
 </footer>
+
+<script>
+  // Proteção leve anti-cópia nas artes do carrossel
+  document.querySelectorAll('.carousel-track img').forEach(function(img){
+    img.addEventListener('dragstart', function(e){ e.preventDefault(); });
+    img.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  });
+</script>
 
 </body>
 </html>
