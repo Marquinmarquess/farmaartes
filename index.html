@@ -6,6 +6,24 @@
 <title>FarmaArtes — Crie tabloides, ofertas e promoções da sua farmácia em 3 minutos</title>
 <meta name="description" content="Pack de prompts profissionais para gerar tabloides, ofertas e promoções de farmácia com IA gratuita. Acesso vitalício por R$27." />
 
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2579669039125852');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2579669039125852&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -949,7 +967,7 @@
     <div>
       <div class="eyebrow"><span class="dot"></span> Para donos de farmácia que cansaram de pagar designer caro</div>
       <h1 class="headline">
-        Crie tabloides, ofertas e promoções da sua farmácia em <em>3 minutos</em> — sem designer, sem mensalidade, sem dor de cabeça
+        Pare de pagar R$150 por arte de designer. Crie a sua em <em>3 minutos</em> com IA gratuita.
       </h1>
       <p class="subhead">
         <strong>50+ prompts profissionais</strong> prontos para você copiar, colar em IA gratuita e gerar arte de varejo no padrão das grandes redes — Drogasil, Pague Menos, São João. Pagou uma vez, é seu para sempre.
@@ -1274,7 +1292,7 @@
     <p class="section-sub">Pagamento único. Acesso vitalício. Sem mensalidade obrigatória.</p>
 
     <div class="preco-tabloide">
-      <div class="preco-head">★ OFERTA DE LANÇAMENTO ★</div>
+      <div class="preco-head">★ OFERTA DE LANÇAMENTO · VÁLIDA ATÉ 30/06 ★</div>
       <div class="preco-corpo">
         <div class="preco-titulo">FarmaArtes — Pack Completo</div>
         <div class="preco-de">DE <s>R$197,00</s></div>
@@ -1284,10 +1302,11 @@
         </div>
         <div class="preco-info">
           <strong>Pagamento único.</strong> Sem assinatura. Sem mensalidade.<br>
-          Acesso imediato. Garantia incondicional de 7 dias.
+          Acesso imediato. Garantia incondicional de 7 dias.<br>
+          <strong style="color:#b30000">A partir de 01/07 o pack passa para R$47.</strong>
         </div>
         <a href="https://pay.cakto.com.br/7usxyz3_929933" class="preco-cta">
-          QUERO COMPRAR AGORA
+          QUERO PARAR DE PAGAR DESIGNER
           <span>→</span>
         </a>
       </div>
@@ -1431,6 +1450,15 @@
   document.querySelectorAll('.carousel-track img').forEach(function(img){
     img.addEventListener('dragstart', function(e){ e.preventDefault(); });
     img.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  });
+
+  // Meta Pixel: dispara InitiateCheckout quando o usuário clica para ir ao Cakto
+  document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', { value: 27.00, currency: 'BRL' });
+      }
+    });
   });
 </script>
 
